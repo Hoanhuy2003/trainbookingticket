@@ -1,0 +1,28 @@
+package com.project.tickettrainbooking.responses;
+
+import com.project.tickettrainbooking.models.DatVe;
+import lombok.*;
+
+import java.time.LocalDateTime;
+@Data
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class DatVeResponse {
+     private Integer maDatTau;
+     private String hoTen;
+     private Integer maChuyenTau;
+     private LocalDateTime ngayDat;
+     private String trangThai;
+
+     public static DatVeResponse fromDatVe(DatVe datVe){
+         return  DatVeResponse.builder()
+                 .maDatTau(datVe.getMaDatVe())
+                 .hoTen(datVe.getNguoiDung().getHoTen())
+                 .maChuyenTau(datVe.getChuyenTau().getMaChuyenTau())
+                 .ngayDat(datVe.getNgayDat())
+                 .trangThai(datVe.getTrangThai()).build();
+     }
+}
