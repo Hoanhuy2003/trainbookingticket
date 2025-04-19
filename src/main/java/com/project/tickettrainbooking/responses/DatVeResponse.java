@@ -12,16 +12,16 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class DatVeResponse {
      private Integer maDatTau;
-     private String hoTen;
-     private Integer maChuyenTau;
+     private NguoiDungResponse nguoiDung;
+     private ChuyenTauResponse chuyenTau;
      private LocalDateTime ngayDat;
      private String trangThai;
 
      public static DatVeResponse fromDatVe(DatVe datVe){
          return  DatVeResponse.builder()
                  .maDatTau(datVe.getMaDatVe())
-                 .hoTen(datVe.getNguoiDung().getHoTen())
-                 .maChuyenTau(datVe.getChuyenTau().getMaChuyenTau())
+                 .nguoiDung(NguoiDungResponse.fromNguoiDung(datVe.getNguoiDung()))
+                 .chuyenTau(ChuyenTauResponse.fromChuyenTau(datVe.getChuyenTau()))
                  .ngayDat(datVe.getNgayDat())
                  .trangThai(datVe.getTrangThai()).build();
      }
